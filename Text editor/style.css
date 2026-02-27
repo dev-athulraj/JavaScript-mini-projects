@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+
+/* ─── Reset & Tokens ────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg:         #0b0f1a;
+    --surface:    #ffffff;
+    --surface-2:  #f4f5f8;
+    --border:     #e2e5ed;
+    --border-focus: #6c63ff;
+    --text-primary:   #0d1117;
+    --text-secondary: #5a6070;
+    --accent:     #6c63ff;
+    --accent-soft:#ede9ff;
+    --active-bg:  #edeaff;
+    --active-ring:#c8c0ff;
+    --shadow-sm:  0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-md:  0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05);
+    --shadow-lg:  0 24px 64px rgba(11,15,26,.22), 0 8px 24px rgba(11,15,26,.1);
+    --radius-sm:  5px;
+    --radius-md:  10px;
+    --radius-lg:  16px;
+    --font-ui:    'DM Sans', system-ui, sans-serif;
+    --font-mono:  'DM Mono', monospace;
+    --transition: 150ms cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ─── Body ──────────────────────────────────────────────────────────────────── */
+body {
+    background-color: var(--bg);
+    background-image:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(108,99,255,.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 90%, rgba(6,220,253,.12) 0%, transparent 55%);
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-ui);
+}
+
+/* ─── Container ─────────────────────────────────────────────────────────────── */
+.container {
+    background-color: var(--surface);
+    width: min(90vmin, 860px);
+    padding: 36px 32px 32px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255,255,255,.06);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle top accent bar */
+.container::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent) 0%, #06dcfd 100%);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* ─── Toolbar ───────────────────────────────────────────────────────────────── */
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 2px;
+}
+
+/* Divider utility — add <span class="divider"> between groups */
+.options .divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+    margin: 0 6px;
+    flex-shrink: 0;
+}
+
+/* ─── Toolbar Buttons ───────────────────────────────────────────────────────── */
+button {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 500;
+    outline: none;
+    position: relative;
+}
+
+button:hover {
+    background: var(--surface);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+button:focus-visible {
+    box-shadow: 0 0 0 2px var(--accent);
+}
+
+button:active {
+    transform: scale(.93);
+}
+
+/* ─── Select ────────────────────────────────────────────────────────────────── */
+select {
+    padding: 5px 28px 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%235a6070' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 10px center;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    height: 32px;
+    line-height: 1;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(108,99,255,.15);
+}
+
+/* ─── Labels ────────────────────────────────────────────────────────────────── */
+.options label {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: .02em;
+    text-transform: uppercase;
+}
+
+/* ─── Color Picker ──────────────────────────────────────────────────────────── */
+input[type="color"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    width: 32px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    padding: 2px;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border-radius: 50%;
+    border: 2px solid var(--surface);
+    box-shadow: 0 0 0 1.5px var(--border), var(--shadow-sm);
+    transition: box-shadow var(--transition);
+}
+
+input[type="color"]::-moz-color-swatch {
+    border-radius: 50%;
+    border: 2px solid var(--surface);
+    box-shadow: 0 0 0 1.5px var(--border);
+}
+
+input[type="color"]:hover::-webkit-color-swatch {
+    box-shadow: 0 0 0 2px var(--accent), var(--shadow-sm);
+}
+
+/* ─── Text Area ─────────────────────────────────────────────────────────────── */
+#text-input {
+    margin-top: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px 22px;
+    height: 50vh;
+    min-height: 240px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-primary);
+    background: var(--surface);
+    resize: vertical;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    width: 100%;
+    display: block;
+    outline: none;
+}
+
+#text-input:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(108,99,255,.12), var(--shadow-sm);
+}
+
+#text-input::placeholder {
+    color: #b0b7c5;
+}
+
+/* Scrollbar */
+#text-input::-webkit-scrollbar        { width: 6px; }
+#text-input::-webkit-scrollbar-track  { background: transparent; }
+#text-input::-webkit-scrollbar-thumb  { background: var(--border); border-radius: 99px; }
+#text-input::-webkit-scrollbar-thumb:hover { background: #c4c8d4; }
+
+/* ─── Active / Pressed State ────────────────────────────────────────────────── */
+.active,
+button.active {
+    background-color: var(--active-bg);
+    color: var(--accent);
+    box-shadow: inset 0 0 0 1px var(--active-ring);
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .container {
+        width: 96vw;
+        padding: 24px 16px 20px;
+    }
+
+    .options {
+        gap: 3px;
+        padding: 6px 8px;
+    }
+}
