@@ -3,7 +3,7 @@
 A modern, elegant **Aspect Ratio Calculator** built with vanilla HTML, CSS, and JavaScript.  
 Helps you instantly calculate height from width (or vice versa) while preserving any custom aspect ratio — perfect for designers, developers, video editors, and photographers.
 
-![Aspect Ratio Calculator Preview](aspect-ratio-calculator/ScreenShot/screenshot.png)  
+![Aspect Ratio Calculator Preview](ScreenShot/screenshot.png)  
 
 ## Features
 
