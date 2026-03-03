@@ -12,6 +12,7 @@ A collection of beginner to intermediate JavaScript projects built with vanilla 
 | 2 | [Text Editor](./text-editor/) | A minimal browser-based text editing tool |
 | 3 | [Password Generator](./password-generator/) | Generate secure passwords with custom rules |
 | 4 | [XO Game](./xo-gaming/) | A premium-styled Tic-Tac-Toe game with score tracking |
+| 5 | [Aspect Ratio Calculator](./aspect-ratio-calculator/) | A modern, elegant calculator to instantly compute height from width (or vice versa) while preserving any custom aspect ratio |
 
 ---
 
